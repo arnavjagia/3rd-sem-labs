@@ -1,5 +1,4 @@
 <html><head>
-<title>Java Operator Precedence Table</title>
 </head>
 <body>
 
