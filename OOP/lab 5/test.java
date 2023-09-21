@@ -15,16 +15,22 @@ public class test {
         // System.out.println(c);
 
         // Original string
-        String originalString = "Hello, world!";
+        // String originalString = "Hello, world!";
         
-        // Character to add
-        char characterToAdd = 'X';
+        // // Character to add
+        // char characterToAdd = 'X';
         
-        // Add the character to the original string and create a new string
-        String newString = originalString + characterToAdd;
+        // // Add the character to the original string and create a new string
+        // String newString = originalString + characterToAdd;
         
-        // Print the new string
-        System.out.println("Original String: " + originalString);
-        System.out.println("New String: " + newString);
+        // // Print the new string
+        // System.out.println("Original String: " + originalString);
+        // System.out.println("New String: " + newString);
+
+
+        int a = 10;
+        String s = "";
+        s += a;
+        System.out.println(s);
     }
 }

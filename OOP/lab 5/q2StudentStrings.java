@@ -84,3 +84,12 @@ public class q2StudentStrings {
         System.out.println(std.sname);
     }
 }
+
+/* ------------------------------- SAMPLE --------------------------------
+Name:
+
+Arnav Jagia#marks:2
+Enter marks 2 4
+AJ
+ArnavJagia
+*/
