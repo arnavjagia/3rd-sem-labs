@@ -22,7 +22,7 @@ int main()
     display(q);
     enqueue(q,2);
     display(q);
-    
+
     dequeue(q);
     display(q);
     enqueue(q, 3);
