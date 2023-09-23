@@ -66,15 +66,17 @@ void displayQ(Cqueue *q)
 {
     printf("\nQueue: ");
     // Print the queue elements from front to rear
-    int i;
-    for (i = q->front+1; i <= q->rear; i++)
+    for (int i = q->front + 1; i <= q->rear; i++)
         printf("%d ", q->item[i]);
     // If the queue is wrapped around (circular), print elements from 0 to rear
-    if (q->front+1 > q->rear)
+    if (q->front > q->rear)
     {
-        for (i = 0; i <= q->rear; i++)
+        for (int i = q->front+1; i <= MAX_SIZE-1; i++)
+            printf("%d ", q->item[i]);
+        for (int i = 0; i <= q->rear; i++)
             printf("%d ", q->item[i]);
     }
+    printf("\n");
 
     // printf("\nQueue: ");
     // for (int i = q->front + 1; i <= q->rear; i++)
