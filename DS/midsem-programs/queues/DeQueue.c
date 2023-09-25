@@ -1,98 +1,86 @@
 /*
-ALL HAIL SARTAJ SAHANI
+Circular queue
 */
-#include<stdio.h>
-#include<stdlib.h>
-#define MAX_SIZE 10
+
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 6
 
 typedef struct
 {
-    int item[MAX_SIZE], front, rear;
-} Cqueue;
+    int item[SIZE], front, rear;
+} Queue;
 
-Cqueue *createQueue();
-void addQR(Cqueue *, int);
-void addQF(Cqueue *, int);
-int deleteQF(Cqueue *);
-int deleteQR(Cqueue *);
-void displayQ(Cqueue *);
-
-int main()
+Queue *createQ()
 {
-    Cqueue *cq = createQueue(MAX_SIZE);
-    displayQ(cq);
-    addQR(cq, 1);
-    addQR(cq, 2);
-    addQR(cq, 3);
-    addQR(cq, 4);
-    addQR(cq, 5);
-    addQR(cq, 6);
-    addQR(cq, 7);
-    addQR(cq, 8);
-    addQR(cq, 9);
-    addQR(cq, 10);
-    displayQ(cq);
-    deleteQF(cq);
-    deleteQF(cq);
-    deleteQF(cq);
-    deleteQF(cq);
-    deleteQF(cq);
-    displayQ(cq);
-    addQR(cq, 11);
-    displayQ(cq);
-}
-
-Cqueue *createQueue()
-{
-    Cqueue *q = (Cqueue *)malloc(sizeof(Cqueue));
+    Queue *q = (Queue *)malloc(sizeof(Queue));
     q->front = q->rear = 0;
     return q;
 }
 
-void addQR(Cqueue *q, int element)
+void addQR(Queue *q, int element)
 {
     int x = q->rear;
-    q->rear = (q->rear + 1) % MAX_SIZE;
-    if (q->front == q->rear) {q->rear = x; printf("Queue is full"); return;}
+    q->rear = (q->rear + 1) % SIZE;
+    if (q->front == q->rear) { q->rear = x; printf("\nQueue is Full\n"); return;}
     q->item[q->rear] = element;
 }
 
-void addQF(Cqueue *q, int element)
+void addQF(Queue *q, int element)
 {
     int x = q->rear;
-    q->rear = (q->rear + 1) % MAX_SIZE;
-    if (q->front == q->rear) {q->rear = x; printf("Queue is full"); return;}
-    q->front = (q->front + MAX_SIZE - 1) % MAX_SIZE;
-    if (q->front == MAX_SIZE - 1) {q->item[0] = element; return;}
-    q->item[q->front + 1] = element;
+    x = (x + 1) % SIZE;
+    if (q->front == x) { printf("\nQueue is full\n"); return; }
+    q->item[q->front] = element;
+    q->front = (q->front + SIZE - 1) % SIZE;
 }
 
-int deleteQF(Cqueue *q)
+int deleteQR(Queue *q)
 {
-    if (q->front == q->rear) { printf("Queue is empty"); return 999; }
-    q->front = (q->front + 1) % MAX_SIZE;
+    if (q->front == q->rear) { printf("\nQueue is empty"); return 999; }
+    int x = q->rear;
+    q->rear = (q->rear + SIZE - 1) % SIZE;
+    return x;
+}
+
+int deleteQF(Queue *q)
+{
+    if (q->front == q->rear) { printf("Queue is Empty\n"); return 999;}
+    q->front = (q->front + 1) % SIZE;
     return q->item[q->front];
 }
 
-int deleteQR(Cqueue *q)
+void displayQ(Queue *q)
 {
-    if (q->front == q->rear) { printf("Queue is empty"); return 999; }
-    return q->item[q->rear--];
-}
-
-void displayQ(Cqueue *q)
-{
-    printf("\nQueue: ");
-    // Print the queue elements from front to rear
+    printf("\nCircular Queue: ");
     for (int i = q->front + 1; i <= q->rear; i++)
         printf("%d ", q->item[i]);
-    // If the queue is wrapped around (circular), print elements from 0 to rear
     if (q->front > q->rear)
     {
-        for (int i = q->front+1; i <= MAX_SIZE-1; i++)
+        for (int i = q->front+1; i < SIZE; i++)
             printf("%d ", q->item[i]);
         for (int i = 0; i <= q->rear; i++)
             printf("%d ", q->item[i]);
     }
-    printf("\n");
+}
+
+int main()
+{
+    Queue *q = createQ();
+    displayQ(q);
+    addQR(q, 1);
+    addQR(q, 2);
+    addQF(q, 3);
+    addQF(q, 4);
+    // addQR(q, 3);
+    // addQR(q, 4);
+    // addQR(q, 5);
+    displayQ(q);
+    deleteQR(q);
+    deleteQR(q);
+    deleteQR(q);
+    displayQ(q);
+    // deleteQF(q);
+    // addQR(q, 6);
+    // displayQ(q);
 }
