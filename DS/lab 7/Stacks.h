@@ -37,7 +37,7 @@ int pop(stack *s)
 
 int isfull(stack *s)
 {
-    return s->top >= SIZE;
+    return s->top >= SIZE - 1;
 }
 
 int isempty(stack *s)
