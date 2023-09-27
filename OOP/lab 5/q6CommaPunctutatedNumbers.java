@@ -9,9 +9,9 @@ public class q6CommaPunctutatedNumbers {
     {
         String str, nString = "", rev = "";
         System.out.print("#: ");
-        Scanner sc = new Scanner(System.in);
-        str = sc.nextLine();
-        
+        try (Scanner sc = new Scanner(System.in)) {
+            str = sc.nextLine();
+        }
         int len = str.length();
         for (int i = len-1; i >= 0; i--) {
             int e = len-i-1;
@@ -23,7 +23,7 @@ public class q6CommaPunctutatedNumbers {
             rev += nString.charAt(i);
         }
         System.out.println("Comma punctuated string: " + rev);
-    }
+        }
 }
 
 /* ------------------------------- SAMPLE --------------------------------

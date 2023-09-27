@@ -17,16 +17,17 @@ class Student {
     // call to assign values to the STUDENT object
     void assign() {
         // reading student name
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Name: ");
-        sname = sc.nextLine();
-        // reading marks array
-        System.out.print("#marks: ");
-        int n = sc.nextInt();
-        marks_array = new int[n];
-        System.out.println("Enter marks");
-        for (int i = 0; i < n; i++)
-            marks_array[i] = sc.nextInt();
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Name: ");
+            sname = sc.nextLine();
+            // reading marks array
+            System.out.print("#marks: ");
+            int n = sc.nextInt();
+            marks_array = new int[n];
+            System.out.println("Enter marks");
+            for (int i = 0; i < n; i++)
+                marks_array[i] = sc.nextInt();
+        }
     }
 
     // displays STUDENT object
@@ -56,23 +57,24 @@ class Student {
 
 class q1Stud {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("#students: ");
-        int n = sc.nextInt();
+        try (Scanner sc = new Scanner(System.in);) {
+            System.out.print("#students: ");
+            int n = sc.nextInt();
 
-        Student[] stu = new Student[n];
+            Student[] stu = new Student[n];
 
-        for (int i = 0; i < n; i++) {
-            stu[i] = new Student();
-            stu[i].assign();
+            for (int i = 0; i < n; i++) {
+                stu[i] = new Student();
+                stu[i].assign();
+                System.out.println();
+            }
+
             System.out.println();
-        }
-
-        System.out.println();
-        for (Student s : stu) {
-            s.display();
-            s.compute();
-            System.out.println();
+            for (Student s : stu) {
+                s.display();
+                s.compute();
+                System.out.println();
+            }
         }
     }
 }

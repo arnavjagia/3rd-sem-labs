@@ -4,8 +4,6 @@ Add the following string processing methods to the class Employee:
 a) formatEmployeeName(): A method that formats the employee's name by capitalizing the first letter of each word and converting the remaining letters to lowercase. For example, if the employee's name is "JOHN DOE", this method would transform it to "John Doe".
 b) generateEmail(): A method that generates an email address for the employee based on their name. For example, if the employee's name is "John Doe", this method would generate an email address like "jdoe@example.com".
 */
-import java.util.*;
-
 class Employee {
     String Ename;
     int Eid;
