@@ -31,11 +31,13 @@ class Employee {
         */
         char firstChar = Ename.charAt(0);
         nName += (isCaps(firstChar)) ? (char) (firstChar) : (char) (firstChar - 32);
-        for(int i = 1; i < len-1; i++)
+        for(int i = 1; i < len - 1; i++)
         {
             char present = Ename.charAt(i), next = Ename.charAt(i+1);
             if (isSpace(present)) {
-                if (isSpace(next)) continue;
+                if (isSpace(next))
+                    continue;
+                nName += (char) 32;
                 nName += (isCaps(next)) ? (char) (next) : (char) (next - 32); i++;
             }
             else {
@@ -51,8 +53,22 @@ class Employee {
 
     String generateEmail()
     {
+        this.formatEmployeeName();
         String email = "";
-        return email;
+        char firstChar = Ename.charAt(0);
+        email += firstChar;
+        boolean reachSpace = false;
+        for (int i = 1; i < Ename.length(); i++) {
+            char c = Ename.charAt(i);
+            if (!reachSpace) {
+                if (c == 32)
+                    reachSpace = true;
+            } else {
+                email += c;
+            }
+        }
+        email += "@gmail.com";
+        return email.toLowerCase();
     }
 
     void display() {
@@ -69,5 +85,7 @@ public class q1EmployeeStrings {
         emp.display();
         emp.formatEmployeeName();
         emp.display();
+        String email = emp.generateEmail();
+        System.out.println(email);
     }
 }
