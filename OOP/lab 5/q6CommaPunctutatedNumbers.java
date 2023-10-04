@@ -5,13 +5,11 @@ e.g., Input String : “1234567” Output String : “1,234,567”
 import java.util.*;
 
 public class q6CommaPunctutatedNumbers {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         String str, nString = "", rev = "";
         System.out.print("#: ");
-        try (Scanner sc = new Scanner(System.in)) {
-            str = sc.nextLine();
-        }
+        Scanner sc = new Scanner(System.in);
+        str = sc.nextLine();
         int len = str.length();
         for (int i = len-1; i >= 0; i--) {
             int e = len-i-1;
@@ -23,7 +21,8 @@ public class q6CommaPunctutatedNumbers {
             rev += nString.charAt(i);
         }
         System.out.println("Comma punctuated string: " + rev);
-        }
+        sc.close();
+    }
 }
 
 /* ------------------------------- SAMPLE --------------------------------

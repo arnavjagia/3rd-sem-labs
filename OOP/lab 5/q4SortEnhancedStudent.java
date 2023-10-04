@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
 
-class enStudent {
+class sortStudent {
     // ... (previous code)
     String reg, name;
     static GregorianCalendar doj;
@@ -35,7 +35,7 @@ class enStudent {
         return reg;
     }
 
-    enStudent(String r, String n, GregorianCalendar d, short s, float g, float c) {
+    sortStudent(String r, String n, GregorianCalendar d, short s, float g, float c) {
         reg = r;
         name = n;
         doj = d;
@@ -49,7 +49,7 @@ class enStudent {
                 reg, name, doj.get(Calendar.DATE), doj.get(Calendar.MONTH) + 1, doj.get(Calendar.YEAR), sem, gpa, cgpa);
     }
 
-    static enStudent read(Scanner sc, int i) {
+    static sortStudent read(Scanner sc, int i) {
         sc.nextLine(); // Consume the newline character left by previous nextInt()
 
         System.out.println("Input for student " + (i + 1) + ":");
@@ -73,13 +73,13 @@ class enStudent {
         // Create a GregorianCalendar with the provided date
         GregorianCalendar d = new GregorianCalendar(year, month - 1, day); // Month is 0-based
 
-        String r = enStudent.setRegistration(year, i);
+        String r = sortStudent.setRegistration(year, i);
 
-        return new enStudent(r, n, d, s, g, cg);
+        return new sortStudent(r, n, d, s, g, cg);
     }
 
     // Sort by semester and CGPA using Bubble Sort
-    static void sortBySemesterAndCGPA(enStudent[] students) {
+    static void sortBySemesterAndCGPA(sortStudent[] students) {
         int n = students.length;
         boolean swapped;
         do {
@@ -89,7 +89,7 @@ class enStudent {
                         (students[i].getSemester() == students[i + 1].getSemester() &&
                                 students[i].getCGPA() < students[i + 1].getCGPA())) {
                     // Swap students[i] and students[i+1]
-                    enStudent temp = students[i];
+                    sortStudent temp = students[i];
                     students[i] = students[i + 1];
                     students[i + 1] = temp;
                     swapped = true;
@@ -100,7 +100,7 @@ class enStudent {
     }
 
     // Sort by name using Bubble Sort
-    static void sortByName(enStudent[] students) {
+    static void sortByName(sortStudent[] students) {
         int n = students.length;
         boolean swapped;
         do {
@@ -108,7 +108,7 @@ class enStudent {
             for (int i = 0; i < n - 1; i++) {
                 if (students[i].getName().compareTo(students[i + 1].getName()) > 0) {
                     // Swap students[i] and students[i+1]
-                    enStudent temp = students[i];
+                    sortStudent temp = students[i];
                     students[i] = students[i + 1];
                     students[i + 1] = temp;
                     swapped = true;
@@ -140,9 +140,9 @@ public class q4SortEnhancedStudent {
         Scanner sc = new Scanner(System.in);
         System.out.print("Number of students- ");
         int n = sc.nextInt();
-        enStudent[] std = new enStudent[n];
+        sortStudent[] std = new sortStudent[n];
         for (int i = 0; i < std.length; i++) {
-            std[i] = enStudent.read(sc, i);
+            std[i] = sortStudent.read(sc, i);
         }
 
         // Sorting options
@@ -153,15 +153,13 @@ public class q4SortEnhancedStudent {
 
         switch (choice) {
             case 1:
-                enStudent.sortBySemesterAndCGPA(std);
+                sortStudent.sortBySemesterAndCGPA(std);
                 break;
             case 2:
-                enStudent.sortByName(std);
+                sortStudent.sortByName(std);
                 break;
             default:
-                System.out.println("Invalid choice. Sorting by semester and CGPA by default.");
-                enStudent.sortBySemesterAndCGPA(std);
-                break;
+                System.out.println("Invalid choice!!");
         }
 
         System.out.println("\nSorted Student Records:");
@@ -170,3 +168,40 @@ public class q4SortEnhancedStudent {
         }
     }
 }
+
+/*
+Number of students- 2
+Input for student 1:
+Name: a
+DOJ (Year Month Day): 2023 11 10
+Semester: 3
+GPA: 8.8
+CGPA: 8.8
+Input for student 2:
+Name: b
+DOJ (Year Month Day): 2022 02 01
+Semester: 3
+GPA: 9.2
+CGPA: 9.2
+
+Choose sorting option:
+1. Sort by semester and CGPA
+2. Sort by name
+1
+
+Sorted Student Records:
+
+Registration no: 2202
+Name: b
+doj: 1/2/2022
+sem: 3
+gpa: 9.200000
+cgpa: 9.200000
+
+Registration no: 2301
+Name: a
+doj: 10/11/2023
+sem: 3
+gpa: 8.800000
+cgpa: 8.800000
+*/

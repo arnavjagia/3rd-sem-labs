@@ -9,7 +9,7 @@ d) Sort the students alphabetically
 
 import java.util.Scanner;
 
-class Student {
+class StudentStr {
     String sname;
     int[] marks_array;
 
@@ -67,8 +67,7 @@ class Student {
         String nString = "";
         // finding whitespace
         for (int i = 0; i < sname.length(); i++) {
-            if (sname.charAt(i) == ' ')
-                continue;
+            if (sname.charAt(i) == ' ') continue;
             nString += sname.charAt(i);
         }
         // assigning nString back to sname
@@ -78,7 +77,7 @@ class Student {
 
 public class q2StudentStrings {
     public static void main(String[] args) {
-        Student std = new Student();
+        StudentStr std = new StudentStr();
         std.assign();
         System.out.println(std.extractInitials());
         std.removeWhitespace();

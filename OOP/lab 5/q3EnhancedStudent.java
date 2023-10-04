@@ -105,33 +105,32 @@ public class q3EnhancedStudent {
 }
 
 /* ------------------------------- SAMPLE --------------------------------
-Number of students-2 Input for student 0:Name:
-arnav jagia
-
-DOJ (Year Month Day): 2022 2 2
-Semester: 1
-GPA: 9.9
-CGPA: 9.8
+Number of students- 2
 Input for student 1:
-Name: j a
+Name: a    
+DOJ (Year Month Day): 2023 11 10
+Semester: 3
+GPA: 8.8
+CGPA: 8.8
+Input for student 2:
+Name: b
+DOJ (Year Month Day): 2022 02 01
+Semester: 3
+GPA: 9.2
+CGPA: 9.2
 
-DOJ (Year Month Day): 2023 1 2
-Semester: 2
-GPA: 3.3
-CGPA: 4.4
 
+Registration no: 2301
+Name: a
+doj: 1/2/2022
+sem: 3
+gpa: 8.800000
+cgpa: 8.800000
 
-Registration no: 2201
-Name: arnav jagia
-doj: 2/1/2023
-sem: 1
-gpa: 9.900000
-cgpa: 9.800000
-
-Registration no: 2302
-Name: j a
-doj: 2/1/2023
-sem: 2
-gpa: 3.300000
-cgpa: 4.400000
+Registration no: 2202
+Name: b
+doj: 1/2/2022
+sem: 3
+gpa: 9.200000
+cgpa: 9.200000
 */

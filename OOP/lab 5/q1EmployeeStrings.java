@@ -21,8 +21,7 @@ class Employee {
         Basic = bas;
     }
 
-    void formatEmployeeName()
-    {
+    void formatEmployeeName() {
         String nName="";
         Ename = Ename.strip();
         int len = Ename.length();
@@ -30,29 +29,25 @@ class Employee {
         "  JOHN  DOE  "
         */
         char firstChar = Ename.charAt(0);
-        nName += (isCaps(firstChar)) ? (char) (firstChar) : (char) (firstChar - 32);
-        for(int i = 1; i < len - 1; i++)
-        {
+        nName += (isCaps(firstChar)) ? firstChar : (char) (firstChar - 32);
+        for(int i = 1; i < len - 1; i++) {
             char present = Ename.charAt(i), next = Ename.charAt(i+1);
             if (isSpace(present)) {
-                if (isSpace(next))
-                    continue;
-                nName += (char) 32;
-                nName += (isCaps(next)) ? (char) (next) : (char) (next - 32); i++;
-            }
-            else {
-                nName += (isCaps(present)) ? (char) (present + 32) : (char) (present);
+                if (isSpace(next)) continue;
+                nName += ' ';
+                nName += (isCaps(next)) ? next : (char) (next - 32); i++;
+            } else {
+                nName += (isCaps(present)) ? (char) (present + 32) : present;
             }
         }
         char endChar = Ename.charAt(len-1);
-        nName += (isCaps(endChar)) ? (char) (endChar + 32) : (char) (endChar);
+        nName += (isCaps(endChar)) ? (char) (endChar + 32) : endChar;
         Ename = nName;
     }
     private boolean isCaps(char c) { return c>=65 && c<=90; }
     private boolean isSpace(char c) { return c == 32; }
 
-    String generateEmail()
-    {
+    String generateEmail() {
         this.formatEmployeeName();
         String email = "";
         char firstChar = Ename.charAt(0);
@@ -61,11 +56,8 @@ class Employee {
         for (int i = 1; i < Ename.length(); i++) {
             char c = Ename.charAt(i);
             if (!reachSpace) {
-                if (c == 32)
-                    reachSpace = true;
-            } else {
-                email += c;
-            }
+                if (c == 32) reachSpace = true;
+            } else { email += c; }
         }
         email += "@gmail.com";
         return email.toLowerCase();
@@ -80,10 +72,10 @@ class Employee {
 
 public class q1EmployeeStrings {
     public static void main(String[] args) {
-        // Employee emp = new Employee("JOHN DOE", 12, 100.01);
         Employee emp = new Employee("   JOHN    DOE   ", 12, 100.01);
         emp.display();
         emp.formatEmployeeName();
+        System.out.println();
         emp.display();
         String email = emp.generateEmail();
         System.out.println(email);

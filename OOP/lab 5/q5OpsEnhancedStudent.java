@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
 
-class enStudent {
+class opStudent {
     // ... (previous code)
     String reg, name;
     static GregorianCalendar doj;
@@ -36,7 +36,7 @@ class enStudent {
         return reg;
     }
 
-    enStudent(String r, String n, GregorianCalendar d, short s, float g, float c) {
+    opStudent(String r, String n, GregorianCalendar d, short s, float g, float c) {
         reg = r;
         name = n;
         doj = d;
@@ -50,7 +50,7 @@ class enStudent {
                 reg, name, doj.get(Calendar.DATE), doj.get(Calendar.MONTH) + 1, doj.get(Calendar.YEAR), sem, gpa, cgpa);
     }
 
-    static enStudent read(Scanner sc, int i) {
+    static opStudent read(Scanner sc, int i) {
         sc.nextLine(); // Consume the newline character left by previous nextInt()
 
         System.out.println("Input for student " + (i + 1) + ":");
@@ -74,9 +74,9 @@ class enStudent {
         // Create a GregorianCalendar with the provided date
         GregorianCalendar d = new GregorianCalendar(year, month - 1, day); // Month is 0-based
 
-        String r = enStudent.setRegistration(year, i);
+        String r = opStudent.setRegistration(year, i);
 
-        return new enStudent(r, n, d, s, g, cg);
+        return new opStudent(r, n, d, s, g, cg);
     }
 
     // Getter for semester
@@ -96,9 +96,9 @@ class enStudent {
     }
 
     // Function to list students whose name starts with a particular character
-    static void listStudentsWithStartingCharacter(enStudent[] students, char startChar) {
+    static void listStudentsWithStartingCharacter(opStudent[] students, char startChar) {
         System.out.println("Students whose name starts with '" + startChar + "':");
-        for (enStudent student : students) {
+        for (opStudent student : students) {
             if (student.getName().charAt(0) == startChar) {
                 student.display();
             }
@@ -106,9 +106,9 @@ class enStudent {
     }
 
     // Function to list students whose name contains a particular substring
-    static void listStudentsWithSubstring(enStudent[] students, String subString) {
+    static void listStudentsWithSubstring(opStudent[] students, String subString) {
         System.out.println("Students whose name contains '" + subString + "':");
-        for (enStudent student : students) {
+        for (opStudent student : students) {
             if (student.getName().contains(subString)) {
                 student.display();
             }
@@ -137,11 +137,11 @@ public class q5OpsEnhancedStudent {
         Scanner sc = new Scanner(System.in);
         System.out.print("Number of students- ");
         int n = sc.nextInt();
-        enStudent[] std = new enStudent[n];
+        opStudent[] std = new opStudent[n];
 
         // Read student information
         for (int i = 0; i < std.length; i++) {
-            std[i] = enStudent.read(sc, i);
+            std[i] = opStudent.read(sc, i);
         }
 
         // Display all students
@@ -153,21 +153,21 @@ public class q5OpsEnhancedStudent {
         // List students whose name starts with a particular character
         System.out.print("\nEnter a character to list students whose name starts with: ");
         char startChar = sc.next().charAt(0);
-        enStudent.listStudentsWithStartingCharacter(std, startChar);
+        opStudent.listStudentsWithStartingCharacter(std, startChar);
 
         // List students whose name contains a particular substring
         sc.nextLine(); // Consume the newline character
         System.out.print("\nEnter a substring to list students whose name contains: ");
         String subString = sc.nextLine();
-        enStudent.listStudentsWithSubstring(std, subString);
+        opStudent.listStudentsWithSubstring(std, subString);
 
         // Change the full name to initials and family name and display modified objects
-        for (enStudent student : std) {
+        for (opStudent student : std) {
             student.changeNameToInitials();
         }
 
         System.out.println("\nModified Student Records:");
-        for (enStudent student : std) {
+        for (opStudent student : std) {
             student.display();
         }
     }

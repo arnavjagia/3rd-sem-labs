@@ -1,6 +1,6 @@
 package com.course.structure;
 
-public class House {
+public class House extends Building{
     private int bedrooms, baths;
 
     // getter and setter for bedrooms
