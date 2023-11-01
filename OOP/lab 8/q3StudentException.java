@@ -79,10 +79,40 @@ class enStudent {
 
 class q3StudentException{
     public static void main(String[] args) {
-
+        // Scanner Object creation
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Number of students- ");
+        int n = sc.nextInt();
+        enStudent[] std = new enStudent[n];
+        try{
+            for (int i = 0; i < std.length; i++) {
+                std[i] = enStudent.read(sc, i);
+                int regnoLast2Digits = 10 * (std[i].reg.charAt(2) - 48) + (std[i].reg.charAt(3) - 48);
+                if (regnoLast2Digits > 25)
+                    throw new SeatsFilledException();
+            }
+        } catch(SeatsFilledException e){
+            System.out.println(e);
+        }
+        for (int i = 0; i < std.length; i++) {
+            std[i].display();
+        }
     }
 }
 
 /* ------------------------------- SAMPLE --------------------------------   
+Number of students- 1
+Input for student 1:
+Name: a
+DOJ (Year Month Day): 2023 11 10
+Semester: 3
+GPA: 8.8
+CGPA: 8.8
 
+Registration no: 2301
+Name: a
+doj: 10/11/2023
+sem: 3
+gpa: 8.800000
+cgpa: 8.800000
 */

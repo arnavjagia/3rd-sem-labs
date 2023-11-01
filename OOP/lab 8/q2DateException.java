@@ -51,5 +51,8 @@ class q2DateException{
 }
 
 /* ------------------------------- SAMPLE --------------------------------   
-
+Enter day: 5
+Enter month: 10
+Enter year: 2023
+Date: 5/10/2023
 */

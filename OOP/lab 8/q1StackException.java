@@ -27,20 +27,20 @@ class Stack {
     }
 
     void push(int ele) throws PushException {
-        if (top == arr.length - 1) throw new PushException(ele);
+        if (top >= arr.length - 1) throw new PushException(ele);
         arr[++top] = ele;
     }
 
     int pop() throws PopException {
-        if (top == -1)
-            throw new PopException();
+        if (top == -1) throw new PopException();
         return arr[top--];
     }
     
     void display() {
         System.out.print("\nStack: ");
-        for (int i = 0; i <= top; i++) System.out.print(arr[i] + " ");
-        System.out.println("\nTop: " + top + "\n");
+        for (int i = 0; i <= top; i++)
+	      System.out.print(arr[i] + " ");
+        System.out.println("\nTop: " + top);
     }
 }
 
@@ -83,5 +83,33 @@ class q1StackException{
 }
 
 /* ------------------------------- SAMPLE --------------------------------   
+Enter size of stack: 2
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter choice: 1
+Enter element to push: 1
 
+Enter choice: 1
+Enter element to push: 2
+
+Enter choice: 1
+Enter element to push: 3
+Stack is full Can't push 3
+
+Enter choice: 3
+
+Stack: 1 2
+Top: 1
+
+Enter choice: 2
+Popped element: 2
+
+Enter choice: 3
+
+Stack: 1
+Top: 0
+
+Enter choice: 4
 */
