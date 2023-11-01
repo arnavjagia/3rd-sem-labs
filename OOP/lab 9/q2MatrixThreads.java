@@ -27,7 +27,7 @@ class MyThread implements Runnable {
     }
 }
 
-class q2MatrixRows {
+class q2MatrixThreads {
     public static void main(String[] args) {
         // def scanning object
         Scanner sc = new Scanner(System.in);
