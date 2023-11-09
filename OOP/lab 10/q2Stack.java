@@ -36,7 +36,7 @@ class Stack<T> {
         }
         System.out.println("---Displaying stack---");
         for (int i = top; i >= 0; i--) {
-            System.out.print(stk[i] + " ");
+            System.out.print(stk[i]);
         }
         System.out.println("\nTop: " + top + "\n");
     }
