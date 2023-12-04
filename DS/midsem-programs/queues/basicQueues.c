@@ -41,7 +41,7 @@ Queue *init(int capacity)
     return a;
 }
 int isFull(Queue *q) { return q->rear >= q->capacity; }
-int isEmpty(Queue *q) { return q->front == q->rear; }
+int isEmpty(Queue *q) { return q->front == q->rear + 1; }
 void enqueue (Queue *q, int element)
 {
     if (isFull(q)) {printf("\nQueue is full\n"); return;}
