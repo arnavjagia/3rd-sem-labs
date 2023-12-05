@@ -272,7 +272,7 @@ int main()
     root = CreateBST(root, 12);
     root = CreateBST(root, 3412);
     root = CreateBST(root, 32);
-        root = CreateBST(root, 76);
+    root = CreateBST(root, 76);
 
 
     printf("Inorder: ");
